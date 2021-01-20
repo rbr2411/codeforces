@@ -1,5 +1,4 @@
-// C++ implementation of search and insert 
-// operations on Trie 
+
 #include <bits/stdc++.h> 
 using namespace std; 
 
