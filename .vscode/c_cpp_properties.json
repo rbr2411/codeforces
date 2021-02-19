@@ -16,19 +16,7 @@
             "cppStandard": "c++17",
             "intelliSenseMode": "${default}"
         },
-        {
-            "name": "inc",
-            "includePath": [
-                "${workspaceFolder}/**"
-            ],
-            "defines": [
-                "_DEBUG",
-                "UNICODE",
-                "_UNICODE"
-            ]
-            
-        },
-        {
+      {
             "name": "inc",
             "includePath": [
                 "${workspaceFolder}/**"

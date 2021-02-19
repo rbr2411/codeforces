@@ -1,0 +1,83 @@
+// Binary Search over the Answer Space
+// Refer LeetCode Longest Palindrome Substring (Problem 5)
+// Useful technique..
+// This Code has time complexity: O(N^2 log(N))
+
+class Solution {
+    //Brute Force Code
+    // O(N^3) -> O(N^2 log(N)) -> O(N^2) . O(N) - Manachar algo
+     public: 
+        bool isPalindrome(string s)
+        {
+            
+            int r = 0;
+            int l = s.length() -1;
+            while(r<=l)
+            {
+                if(s[r] == s[l])
+                {
+                    l--;
+                    r++;
+                }
+                else return false;
+            }
+            return true;
+        }
+    
+    public:
+    int good(int x, string s)
+    {
+        int n = s.length();
+        for(int L = 0; L + x <= n; L++)
+        {
+            if(isPalindrome(s.substr(L,x)))
+                return L;
+        }
+        return -1;
+    }
+public:
+    string longestPalindrome(string s) {
+        int n = s.length();
+        string ans = "";
+        for(int parity: {0,1})
+        {
+            int low = 1;
+            int high = n;
+            if(low%2 != parity)
+            {
+                low++;
+            }
+            if(high %2 != parity) high--;
+            while(low <= high)
+            {
+                int mid = (low + high)/2;
+                if(mid %2 != parity)
+                {
+                    mid++;
+                }
+                if(mid > high)
+                {
+                    break;
+                }
+                int temp = good(mid,s);
+                if(temp != -1)
+                {
+                    if(mid > ans.length())
+                    {
+                        ans = s.substr(temp,mid);
+                    }
+                    low = mid + 2;
+                }
+                else 
+                 {
+                        high = mid -2;
+                }
+            }
+        }
+        return ans;
+    }
+    
+   
+        
+        
+};

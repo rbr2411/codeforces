@@ -11,6 +11,7 @@ struct TrieNode
 
     // isEndOfWord is true if the node represents 
     // end of a word 
+
     bool isEndOfWord; 
 }; 
 
@@ -39,7 +40,6 @@ void insert(TrieNode *root, string key)
         int index = key[i] - 'a'; 
         if (!pCrawl->children[index]) 
             pCrawl->children[index] = getNode(); 
-
         pCrawl = pCrawl->children[index]; 
     } 
 
@@ -74,13 +74,14 @@ int search(struct TrieNode *root, string key,vector<string>words)
     
     //** search using trie**
     TrieNode *dupCrawl = pCrawl;
-    while(!dupCrawl->isEndOfWord){
-        for(int index=0;index<ALPHABET_SIZE;index++){
-            if(dupCrawl->children[index] && !dupCrawl ->isEndOfWord){
-                dupCrawl = dupCrawl->children[index];
+        do{
+            for(int index=0;index<ALPHABET_SIZE;index++){
+                if(dupCrawl->children[index] && !dupCrawl ->isEndOfWord){
+                    dupCrawl = dupCrawl->children[index];
+                    count++;
+                }
             }
-        }
-    }
+        }while(dupCrawl->isEndOfWord == false);
     return count;
 } 
 
