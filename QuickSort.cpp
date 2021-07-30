@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+5#include<bits/stdc++.h>
 using namespace std;
 int partition(int * array,int left,int right, int pivot);
 void quickSort(int *array, int left,int right);

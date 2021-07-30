@@ -82,5 +82,5 @@ int main()
         // remove top element in stack
         s.pop();
     }
-    return 0;
+	return 0;
 }
